@@ -1335,7 +1335,7 @@ getcnchar(char *cnChar)
 }
 main(int argc, char **argv)
 {
-  char *filename="DistrictArr.php",*writename="temp.cpp"; 
+  char *filename="input.txt",*writename="output.txt"; 
   char *mode="r",*mode2="w+", *ls;
 
   FILE *ReadFile=fopen( filename,mode ),*WriteFile=fopen(writename,mode2);
@@ -1349,7 +1349,7 @@ main(int argc, char **argv)
       if (cc>=0&&cc<128)
       {
 
-      fprintf(WriteFile,"%c",cc); //输出
+      fprintf(WriteFile,"%c",cc); //如果是ascii码就输出
       flag=0;
       }
     else 
