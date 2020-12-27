@@ -1335,6 +1335,14 @@ getcnchar(char *cnChar)
 }
 main(int argc, char **argv)
 {
+  printf("sizeof of char:%d\n",sizeof(char));
+  printf("sizeof of int:%d\n",sizeof(int));
+  printf("sizeof of long:%d\n",sizeof(long));
+  printf("sizeof of char:%d\n",sizeof(char));
+  printf("sizeof of short:%d\n",sizeof(short));
+  printf("_________________________________________\n");
+
+
   char *filename="input.txt",*writename="output.txt"; 
   char *mode="r",*mode2="w+", *ls;
 
@@ -1342,37 +1350,29 @@ main(int argc, char **argv)
 
   int cc;
   char ca[101];
-  int flag;
   while (!feof(ReadFile)) 
   { 
       cc=fgetc(ReadFile);
       if (cc>=0&&cc<128)
       {
-
       fprintf(WriteFile,"%c",cc); //如果是ascii码就输出
-      flag=0;
+//      printf("%c %u\n",cc,cc); 
       }
     else 
     {
-
       ca[0]=cc;
       ca[1]=fgetc(ReadFile);
       ca[2]=fgetc(ReadFile);
       ls=getcnchar(ca);
-      printf("%c%c%c\n",ca[0],ca[1],ca[2]);
+//      printf("%c%c%c %hd %hd %hd\n",ca[0],ca[1],ca[2],ca[0],ca[1],ca[2]);
       if (ls==NULL) continue; 
-      if (flag==1) 
-      {
-            fprintf(WriteFile,"%c",ls[0]+32);
-      ls++;
-      }
-      fprintf(WriteFile,"%s",ls);
-      flag=1;
+        else 
+          fprintf(WriteFile,"%s",ls);
     }
   } 
 
   fclose(ReadFile);
   fclose(WriteFile);
-
+  printf("Done!\n");
 	return 0;
 }
